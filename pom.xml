@@ -19,6 +19,7 @@
     <modules>
         <module>order-service</module>
         <module>common</module>
+        <module>infrastructure</module>
     </modules>
 
     <properties>
@@ -26,6 +27,9 @@
         <maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mockito.version>5.23.0</mockito.version>
+        <spring-kafka.version>4.1.2</spring-kafka.version>
+        <kafka-avro-serializer.version>8.3.3</kafka-avro-serializer.version>
+        <avro.version>1.12.2</avro.version>
     </properties>
 
     <dependencyManagement>
@@ -61,6 +65,26 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>kafka-producer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>kafka-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>kafka-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.system</groupId>
+                <artifactId>kafka-config-data</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
@@ -89,6 +113,12 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <release>${java.version}</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
